@@ -1,12 +1,16 @@
 const Discord =require("discord.js");
+const { MessageButton } = require('discord-buttons');
 const axios = require("axios")
+const slow = require('slow')
 const client = new Discord.Client({
     intents: 32767
   })
 
 const prefix = "d!"
 
+let gpm = 0
 
+let spam_status = "ยังไม่มีไรเกิดขึ้น !!"
 
 function connect() {
     let auth = 1;
@@ -37,8 +41,14 @@ function sms_command() {
     client.on('messageCreate', message => {
         if(message.content.startsWith(prefix+"sms")){
           let phone = message.content.split(" ").slice(1)
+          let status_button = new MessageButton()
+          .setStyle('green')
+          .setLabel('สถานะการยิง')
+          .setID('stats_spam')
           if(!phone[0]) return message.channel.send("กรุณาใส่เบอร์ที่ต้องการจะยิงด้วยค้าบ")
-
+          message.reply("คุณสามารถกดปุ่มเา้นล่างข้อความนี้ เพื่อดูสถานะการยิงได้ !!", status_button)
+          gpm = phone[0]
+          sms_send();
       }
     }
   )
@@ -99,9 +109,24 @@ function cooldown() {
 }
 
 function sms_send() {
-  
+  const randomWait = i => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(i), Math.random() * 3000)
+    })
+  }
+  console.clear()
+  get_phone = gpm
+  console.log(`Get ready to start send sms high speed with ${get_phone}`)
+  slow.walk([1, 2, 3, 4, 5, 6], randomWait).then(res => {
+    console.clear()
+    console.log(`Attack to ${get_phone}`)
+  })
 }
 
 module.exports = { connect, login, sms_command, cooldown };
 
 // Module by Gxdjz Zx#9999 //
+
+// License Original code //
+
+// ถ้าอยากดัดแปลง กรุณษขออนุญาติเจ้าของก่อนน้าค้าบ หรือถ้าไม่อยากขอ ก็อย่าลบข้อความนี้พอ นะ โมดูลนี้ผมทำโมดูลแรก ขอเครดิตหน่อยละกัน ไม่ได้ก็อปใคร :) //
