@@ -20,16 +20,6 @@ login();
 sms_command();
 
 cooldown();
-
-const { connect, login, sms_command, cooldown } = require('discord.sms');
-
-connect();
-
-login();
-
-sms_command();
-
-cooldown();
 ```
 
 # Support Server
