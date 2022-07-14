@@ -1,7 +1,14 @@
 {
   "name": "discord.sms",
-  "version": "1.0.2",
-  "description": "sms in discord bot",
+  "version": "1.3.6",
+  "description": "Power full off discord with send auto sms !!",
+  "engines": {
+    "node": ">=7.8.0"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +17,13 @@
     "discord.sms"
   ],
   "author": "gxdjzpro",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://discord.gg/bjCqn3VSaw"
+  },
+  "homepage": "https://github.com/GxdjCoding/discord.sms-src",
+  "dependencies": {
+    "discord.js": "^13.8.1",
+    "discord.sms": "file:"
+  }
 }
